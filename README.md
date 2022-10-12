@@ -1,34 +1,41 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## React Query
+```javascript
+  const { data: listCompanyRecently, isLoading: isLoadingFetchRecentlyCompanies } = useQuery(
+    [QueryKey.getRecentlyCompanies, { enalbe }],
+    () => (sessionClient ? companiesApi.getCompaniesRecently() : null),
+    {
+      select: (data: ResponseBaseWithoutPaging<Company[]> | null) => {
+        console.log('select data', data);
 
-First, run the development server:
+        const listData =
+          (data?.content &&
+            data?.content.map((item: Company) => ({
+              ...item,
+              key: item?._id
+            }))) ||
+          [];
+        return listData;
+      },
+      onSuccess(data) {
+        console.log('onSuccess Data: ', data);
+      },
+      onError: (data: any) => {
+        showAlertError(data?.content?.messageContent);
+      },
+      enabled: !!enalbe,
+      keepPreviousData: true
+    }
+  );
+  ```
+  - ```enabled``` option: ```USED FOR CONDITIONAL FETCH```  If enabled is ```false```, it clear cached data and will not automatically fetch on mount.
+  - ```keepPreviousData```: ```USED FOR PAGINATION OR CONDITONAL FETCH```
+  
+## Docs:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Consider the following example where we would ideally want to increment a pageIndex (or cursor) for a query. If we were to use useQuery, it would still technically work fine, but the UI would jump in and out of the success and loading states as different queries are created and destroyed for each page or cursor. By setting keepPreviousData to true we get a few new things:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- The data from the last successful fetch available while new data is being requested, even though the query key has changed.
+- When the new data arrives, the previous data is ```seamlessly swapped to show the new data.```
+- isPreviousData is made available to know what data the query is currently providing you
