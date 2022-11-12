@@ -1,9 +1,28 @@
 import type { NextPage } from 'next';
+
+import styled from '@emotion/styled';
+import { useRef, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
+import { animiationScroll } from 'components/Animation/animationScroll';
+import * as React from 'react';
+import { Button } from '@mui/material';
+import MUIButton from 'components/Button/MuiButton';
+
+const Header = styled('div')({
+  display: 'flex'
+});
 
 const Home: NextPage = () => {
+  const footerRef = useRef<any>(null);
+  const page2 = useRef<any>();
+
+  // get position of footer
+  useEffect(() => {
+    console.log(document.getElementById('123')?.offsetTop);
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -12,31 +31,37 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href='https://nextjs.org'>Next.js!</a>
-        </h1>
+      <MUIButton>login</MUIButton>
 
-        <p className={styles.description}>
-          Get started by editing <code className={styles.code}>pages/index.tsx</code>
-        </p>
+      {/* <main className={styles.main}>
+   
+
+        <div>
+          <Button
+            className={styles.main__btn}
+            onClick={() => animiationScroll(1000, '123')}
+            variant='text'
+          >
+            Text
+          </Button>
+          <Button variant='contained'>Contained</Button>
+          <Button variant='outlined'>Outlined</Button>
+        </div>
 
         <div className={styles.grid}>
           <a href='https://nextjs.org/docs' className={styles.card}>
             <h2>Documentation &rarr;</h2>
             <p>Find in-depth information about Next.js features and API.</p>
           </a>
-
           <a href='https://nextjs.org/learn' className={styles.card}>
             <h2>Learn &rarr;</h2>
             <p>Learn about Next.js in an interactive course with quizzes!</p>
           </a>
-
           <a href='https://github.com/vercel/next.js/tree/canary/examples' className={styles.card}>
             <h2>Examples &rarr;</h2>
             <p>Discover and deploy boilerplate example Next.js projects.</p>
           </a>
-
+          tg
           <a
             href='https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
             className={styles.card}
@@ -47,7 +72,7 @@ const Home: NextPage = () => {
         </div>
       </main>
 
-      <footer className={styles.footer}>
+      <footer id='123' ref={footerRef} className={styles.footer}>
         <a
           href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
           target='_blank'
@@ -58,9 +83,16 @@ const Home: NextPage = () => {
             <Image src='/vercel.svg' alt='Vercel Logo' width={72} height={16} />
           </span>
         </a>
-      </footer>
+      </footer> */}
     </div>
   );
 };
+
+export function getServerSideProps() {
+  console.log('this run on server 123W');
+  return {
+    props: {}
+  };
+}
 
 export default Home;
