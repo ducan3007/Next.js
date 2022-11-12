@@ -1,9 +1,9 @@
-import { InputLabel } from '@mui/material';
-import { InputLabelProps } from '@mui/material';
-import styled from '@emotion/styled';
+import { InputLabel } from '@mui/material'
+import { InputLabelProps } from '@mui/material'
+import styled from '@emotion/styled'
 
 interface Props extends InputLabelProps {
-  children: any;
+  children: any
 }
 
 const StyledLabel = styled(InputLabel)(({ theme }: any) => ({
@@ -12,10 +12,10 @@ const StyledLabel = styled(InputLabel)(({ theme }: any) => ({
   '& 	.MuiInputLabel-asterisk': {
     color: 'red'
   }
-}));
+}))
 
 const Label = (props: Props) => {
-  return <StyledLabel />;
-};
+  return <StyledLabel />
+}
 
-export default Label;
+export default Label

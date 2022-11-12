@@ -1,9 +1,9 @@
-import { Fragment } from 'react';
-import HeaderLayout from './Header/HeaderLayout';
+import { Fragment } from 'react'
+import HeaderLayout from './Header/HeaderLayout'
 
 type Props = {
-  children: React.ReactNode | JSX.Element;
-};
+  children: React.ReactNode | JSX.Element
+}
 
 const MainLayout = (props: Props) => {
   return (
@@ -11,7 +11,7 @@ const MainLayout = (props: Props) => {
       <HeaderLayout />
       {props.children}
     </Fragment>
-  );
-};
+  )
+}
 
-export default MainLayout;
+export default MainLayout

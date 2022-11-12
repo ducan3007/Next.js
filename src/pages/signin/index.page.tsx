@@ -1,19 +1,19 @@
-import type { NextPage } from 'next';
-import { Typography } from '@mui/material';
-import styled from '@emotion/styled';
-import { useForm } from 'react-hook-form';
+import type { NextPage } from 'next'
+import { Typography } from '@mui/material'
+import styled from '@emotion/styled'
+import { useForm } from 'react-hook-form'
 
-import { MuiInputBase, MuiOutlinedInput } from 'components/TextInput/TextInput';
-import Label from 'components/InputLabel/MuiLabel';
+import { MuiInputBase, MuiOutlinedInput } from 'components/TextInput/TextInput'
+import Label from 'components/InputLabel/MuiLabel'
 
 type FormData = {
-  email: string;
-  password: string;
-  dob: string;
-};
+  email: string
+  password: string
+  dob: string
+}
 
 const LoginPage: NextPage = (props) => {
-  const { register, handleSubmit } = useForm<FormData>();
+  const { register, handleSubmit } = useForm<FormData>()
 
   return (
     <>
@@ -33,14 +33,14 @@ const LoginPage: NextPage = (props) => {
         <MuiInputBase />
       </form>
     </>
-  );
-};
+  )
+}
 
 // for server side rendering
 export function getServerSideProps() {
   return {
     props: {}
-  };
+  }
 }
 
-export default LoginPage;
+export default LoginPage

@@ -1,7 +1,7 @@
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
 const HeaderLayout = () => {
-  return <div>HeaderLayout</div>;
-};
+  return <div>HeaderLayout</div>
+}
 
-export default HeaderLayout;
+export default HeaderLayout

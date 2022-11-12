@@ -1,33 +1,33 @@
-import { createTheme } from '@mui/material/styles';
-import { createBreakpoints } from '@mui/system';
-const Breakpoints = createBreakpoints({});
+import { createTheme } from '@mui/material/styles'
+import { createBreakpoints } from '@mui/system'
+const Breakpoints = createBreakpoints({})
 
 declare module '@mui/material/styles' {
   // Custom colors for Palette
   interface PaletteOptions {
-    neutral: React.CSSProperties['color'];
+    neutral: React.CSSProperties['color']
   }
 
   // Add custome variant to Typography
   interface TypographyVariantsOptions {
-    banner?: React.CSSProperties;
+    banner?: React.CSSProperties
   }
 
   // Add some custome properties to Theme
   interface ThemeOptions {
-    fontSize?: any;
-    fontWeight?: any;
-    fontFamily?: any;
+    fontSize?: any
+    fontWeight?: any
+    fontFamily?: any
   }
   interface Theme {
-    fontSize?: any;
+    fontSize?: any
   }
 }
 
 // Add custome variant to Typography
 declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
-    banner: true;
+    banner: true
   }
 }
 
@@ -82,6 +82,6 @@ const defaultTheme = createTheme({
     primary: ['Montserrat', 'sans-serif'].join(','),
     banner: ['Roboto', 'sans-serif'].join(',')
   }
-});
+})
 
-export default defaultTheme;
+export default defaultTheme

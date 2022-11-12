@@ -1,27 +1,27 @@
-import type { NextPage } from 'next';
+import type { NextPage } from 'next'
 
-import styled from '@emotion/styled';
-import { useRef, useEffect } from 'react';
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
-import { animiationScroll } from 'components/Animation/animationScroll';
-import * as React from 'react';
-import { Button } from '@mui/material';
-import MUIButton from 'components/Button/MuiButton';
+import styled from '@emotion/styled'
+import { useRef, useEffect } from 'react'
+import Head from 'next/head'
+import Image from 'next/image'
+import styles from '../styles/Home.module.css'
+import { animiationScroll } from 'components/Animation/animationScroll'
+import * as React from 'react'
+import { Button } from '@mui/material'
+import MUIButton from 'components/Button/MuiButton'
 
 const Header = styled('div')({
   display: 'flex'
-});
+})
 
 const Home: NextPage = () => {
-  const footerRef = useRef<any>(null);
-  const page2 = useRef<any>();
+  const footerRef = useRef<any>(null)
+  const page2 = useRef<any>()
 
   // get position of footer
   useEffect(() => {
-    console.log(document.getElementById('123')?.offsetTop);
-  }, []);
+    console.log(document.getElementById('123')?.offsetTop)
+  }, [])
 
   return (
     <div className={styles.container}>
@@ -85,14 +85,14 @@ const Home: NextPage = () => {
         </a>
       </footer> */}
     </div>
-  );
-};
-
-export function getServerSideProps() {
-  console.log('this run on server 123W');
-  return {
-    props: {}
-  };
+  )
 }
 
-export default Home;
+export function getServerSideProps() {
+  console.log('this run on server 123W')
+  return {
+    props: {}
+  }
+}
+
+export default Home
