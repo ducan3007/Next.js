@@ -11,7 +11,7 @@ const MainLayout = (props: Props) => {
       <HeaderLayout />
       {props.children}
     </Fragment>
-  ); 
+  );
 };
 
 export default MainLayout;

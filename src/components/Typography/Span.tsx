@@ -9,7 +9,7 @@ interface Props extends TypographyProps {
 }
 
 const StyledText = styled(Typography)(({ theme }: any) => ({
-  fontWeight: theme.fontWeight['bold'],
+  fontWeight: theme.fontWeight['bold']
 }));
 
 const Text = (props: Props) => {
