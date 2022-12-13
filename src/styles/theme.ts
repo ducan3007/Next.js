@@ -31,8 +31,6 @@ declare module '@mui/material/Typography' {
   }
 }
 
-
-
 const defaultTheme = createTheme({
   palette: {
     primary: {
