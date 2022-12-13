@@ -17,7 +17,9 @@ const StyledInput = styled(InputBase)(({ theme }: any) => ({
   }
 }))
 
-const StyledOutlinedInput = styled(OutlinedInput)(({ theme }: any) => ({}))
+const StyledOutlinedInput = styled(OutlinedInput)(({ theme }: any) => ({
+  // CSS here
+}))
 
 const MuiInputBase = ({ label, type, ...props }: Props) => {
   return <StyledInput type={type ?? 'text'} {...props} />

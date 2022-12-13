@@ -3,17 +3,17 @@ import { createBreakpoints } from '@mui/system'
 const Breakpoints = createBreakpoints({})
 
 declare module '@mui/material/styles' {
-  // Custom colors for Palette
+  // declare colors for Palette
   interface PaletteOptions {
     neutral: React.CSSProperties['color']
   }
 
-  // Add custome variant to Typography
+  // declare variant to Typography
   interface TypographyVariantsOptions {
     banner?: React.CSSProperties
   }
 
-  // Add some custome properties to Theme
+  // declare properties to Theme
   interface ThemeOptions {
     fontSize?: any
     fontWeight?: any
@@ -24,12 +24,14 @@ declare module '@mui/material/styles' {
   }
 }
 
-// Add custome variant to Typography
+// declare custome variant to Typography
 declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     banner: true
   }
 }
+
+
 
 const defaultTheme = createTheme({
   palette: {
